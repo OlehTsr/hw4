@@ -1,5 +1,5 @@
 import {assertObjectKeysLength} from "./asserts.js"
-import {catched} from "./catched.js";
+import {catched} from "./asserts.js";
 
 export function testsForTask1(){
     catched({"a": 32},[],assertObjectKeysLength);
