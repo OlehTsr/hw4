@@ -1,16 +1,27 @@
 import {getObjectWithSymbol} from "./task1.js";
-import {getCountOfThisSpecies} from "./task2.js";
-export function assertObjectKeysLength(object){
+export function assertObjectKeysLengthEquality(object){
     if(Object.keys(object).length !== Object.keys(getObjectWithSymbol(object)).length) throw new SyntaxError("Як так то блять?");
 }
-export function assertCountOfSpeсies(object,result,species){
-    if (+getCountOfThisSpecies(object,species) !== +result) throw new SyntaxError("Wrong result");
+
+export function assertEquality(getFromFunction, result){
+    if(getFromFunction !== result) throw new SyntaxError("Wrong result");
 }
-export function catched(object,assert,result,...addition){
+
+export function catchForTask1(object){
     try {
         if(typeof object === "object"){
-            assert(object,result,addition[0]);
+            assertObjectKeysLengthEquality(object);
         } else throw new SyntaxError("Variable isn't an object");
+        console.log("Test passed successfully");
+    }
+    catch (Err){
+        console.log("Test Failed.", Err.message);
+    }
+}
+
+export function catchForTask2(func, species, count, result, methods){
+    try{
+        func(species,count,result,methods);
         console.log("Test passed successfully");
     }
     catch (Err){
