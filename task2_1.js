@@ -1,63 +1,55 @@
-let zoo = [{species: "lion",count: 5,},{species: "dear",count: 1,},{species: "bear",count: 7,},{species: "cow",count: 5,}];
+export let zoo2_1 = [];
 export function getCountOfThisSpeciesWithMethods(species){
-    let animal = zoo.find(item => item.species === species);
-    if(animal) return +animal.count;
-    else throw new SyntaxError("This species isn't in array");
+    let animal = zoo2_1.find(item => item.species === species);
+    if(animal) return animal.count;
+    else return 0;
 }
 
 export function getCountOfAllAnimalsWithMethods(){
-    return zoo.reduce((count,animal) => count + (+animal.count), 0);
+    return zoo2_1.reduce((count,animal) => count + (animal.count), 0);
 }
 
 export function getSpeciesFromCountWithMethods(count){
-    let species = zoo.filter(item => +item.count === +count).map(item => item.species);
+    let species = zoo2_1.filter(item => item.count === count).map(item => item.species);
     if(species.length){
         return species;
     }
-    else throw new SyntaxError("Species with this count aren't in array");
+    return []
 }
 
-export function getSortedObjectByCountWithMethods(){
-    let sortedZoo = zoo.slice();
+export function getSortedArrayByCountWithMethods(){
+    let sortedZoo = zoo2_1.slice();
     function sort(firstSpecies, secondSpecies){
-        if(+firstSpecies.count > +secondSpecies.count) return 1;
-        if(+firstSpecies.count < +secondSpecies.count) return -1;
-        if(+firstSpecies.count === +secondSpecies.count) return 0;
+        if(firstSpecies.count > +secondSpecies.count) return 1;
+        if(firstSpecies.count < +secondSpecies.count) return -1;
+        if(firstSpecies.count === +secondSpecies.count) return 0;
     }
     return sortedZoo.sort(sort).map(item => [item.species,+item.count]);
 }
 
-export function getAllAnimalsWithMethods(){
-    return zoo.map(item => item.species);
+export function getAllSpeciesInOrderWithMethods(){
+    return zoo2_1.map(item => item.species);
 }
 
-export function checkIsAnimalInObjectWithMethods(species){
-    let animal = zoo.find(item => item.species === species);
-    return Boolean(animal);
+export function checkIsAnimalInArrayWithMethods(species){
+    return zoo2_1.some(item => item.species === species);
 }
 
 export function addAnimalWithMethods(species, count){
-    if(typeof species === "string" && typeof count !== "object" && !isNaN(+count) && +count >= 0 && +count !== Infinity){
+    if(typeof species === "string" && typeof count !== "object" && !isNaN(+count) && +count >= 0 && +count !== Infinity) {
 
-        if (zoo.find(item => item.species === species)){
-            zoo.map(function (item){
-                if(item.species === species) item.count = +count;
+        if (zoo2_1.find(item => item.species === species)) {
+            zoo2_1.map(function (item) {
+                if (item.species === species) item.count = +count;
             });
-        }else zoo.push({"species":species,"count":+count,})
-    }else throw new SyntaxError("Wrong value");
-    return zoo;
+        } else zoo2_1.push({"species": species, "count": +count,})
+    }
 }
 
-export function deleteAnimalWithMethods(species){
-    if(zoo.some(item => item.species === species)) {
-        let shift = false;
-        zoo.map(function (item, index, array) {
-            if (item.species === species) shift = true;
-            if (shift && index !== array.length - 1) {
-                array[index] = array[index + 1];
-            }
-        });
-    }else throw new SyntaxError("This object isn't in array");
-    zoo.pop();
-    return zoo;
+export function deleteAnimalBySpeciesWithMethods(species){
+    let animal = zoo2_1.find(item => item.species === species);
+    if (animal) {
+        let index = zoo2_1.indexOf(animal);
+        zoo2_1 = zoo2_1.slice(0, index).concat(zoo2_1.slice(index + 1));
+    }
 }

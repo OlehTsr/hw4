@@ -1,33 +1,34 @@
-let zoo = [{species: "lion",count: 5,},{species: "dear",count: 7,},{species: "parrot",count: 3,},{species: "cow",count: 5,}];
+
+export let zoo2_2 = [];
 export function getCountOfThisSpeciesWithoutMethods(species){
-    for(let animal of zoo){
-        if (animal.species === species) return +animal.count;
+    for(let animal of zoo2_2){
+        if (animal.species === species) return animal.count;
     }
-    throw new SyntaxError("This species isn't in array");
+    return 0;
 }
 
 export function getCountOfAllAnimalsWithoutMethods(){
     let sum = 0;
-    for(let animal of zoo){
+    for(let animal of zoo2_2){
         sum += animal.count;
     }
     return sum;
 }
 export function getSpeciesFromCountWithoutMethods(count){
     let species = [];
-    for (let animal of zoo){
-        if(+animal.count === +count){
-            species.push(animal.species);
+    for (let animal of zoo2_2){
+        if(animal.count === count){
+            species[species.length++] = (animal.species);
         }
     }
     if(species.length){
         return species;
     }
-    else throw new SyntaxError("Species with this count aren't in array");
+    else return [];
 
 }
-export function getSortedObjectByCountWithoutMethods(){
-    let sortedZoo = zoo.slice();
+export function getSortedArrayByCountWithoutMethods(){
+    let sortedZoo = zoo2_2.slice();
     let check1 = true;
 
     while (check1) {
@@ -42,51 +43,48 @@ export function getSortedObjectByCountWithoutMethods(){
     }
     let arrayOfSpeciesAndCount = [];
     for (let animal of sortedZoo){
-        arrayOfSpeciesAndCount.push([animal.species,animal.count]);
+        arrayOfSpeciesAndCount[arrayOfSpeciesAndCount.length++] = [animal.species,animal.count];
     }
     return arrayOfSpeciesAndCount;
 }
 
-export function getAllAnimalsWithoutMethods(){
+export function getAllSpeciesInOrderWithoutMethods(){
     let allSpecies = [];
-    for(let animal of zoo){
-        allSpecies.push(animal.species);
+    for(let animal of zoo2_2){
+        allSpecies[allSpecies.length++] = animal.species;
     }
     return allSpecies;
 }
 
-export function checkIsAnimalInObjectWithoutMethods(species){
-    for (let animal of zoo){
+export function checkIsAnimalInArrayWithoutMethods(species){
+    for (let animal of zoo2_2){
         if(animal.species === species) return true;
     }
     return false;
 }
 
 export function addAnimalWithoutMethods(species, count){
-    if(typeof species === "string" && typeof count !== "object" && !isNaN(+count) && +count >= 0 && +count !== Infinity){
+    if(typeof species === "string" && typeof count !== "object" && !isNaN(+count) && +count >= 0 && +count !== Infinity) {
         let check = false;
-        for(let animal of zoo){
-            if(animal.species === species){
+        for (let animal of zoo2_2) {
+            if (animal.species === species) {
                 animal.count = +count;
                 check = true;
             }
         }
-        if (!check) zoo.push({"species":species,"count":+count,});
-    }else throw new SyntaxError("Wrong value");
-    return zoo;
+        if (!check) zoo2_2[zoo2_2.length++] = {"species": species, "count": +count,};
+    }
 }
 
-export function deleteAnimalWithoutMethods(species){
+export function deleteAnimalBySpeciesWithoutMethods(species){
     let checkIsSpeciesInArray = false;
-    for (let i = 0; i < zoo.length; i++){
-        if(zoo[i].species === species){
-            for(let startIndex = i; startIndex < zoo.length-1; startIndex++){
-                zoo[startIndex] = zoo[startIndex+1];
+    for (let i = 0; i < zoo2_2.length; i++){
+        if(zoo2_2[i].species === species){
+            for(let startIndex = i; startIndex < zoo2_2.length-1; startIndex++){
+                zoo2_2[startIndex] = zoo2_2[startIndex+1];
             }
             checkIsSpeciesInArray = true;
         }
     }
-    if(checkIsSpeciesInArray) zoo.length--;
-    else throw new SyntaxError("This object isn't in array");
-    return zoo;
+    if(checkIsSpeciesInArray) zoo2_2.length--;
 }

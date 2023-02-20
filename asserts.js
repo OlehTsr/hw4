@@ -1,30 +1,46 @@
-import {getObjectWithSymbol} from "./task1.js";
-export function assertObjectKeysLengthEquality(object){
-    if(Object.keys(object).length !== Object.keys(getObjectWithSymbol(object)).length) throw new SyntaxError("Як так то блять?");
-}
 
-export function assertEquality(getFromFunction, result){
-    if(getFromFunction !== result) throw new SyntaxError("Wrong result");
+export function assertEquality(firstValue, secondValue){
+    if (firstValue === secondValue) console.log("  Test passed successfully");
+    else console.log("  Error, Wrong result");
 }
-
-export function catchForTask1(object){
-    try {
-        if(typeof object === "object"){
-            assertObjectKeysLengthEquality(object);
-        } else throw new SyntaxError("Variable isn't an object");
-        console.log("Test passed successfully");
+export function assertEqualityOfArrays(firstArray, secondArray){
+    if(firstArray.length === secondArray.length){
+        for (let i = 0; i < firstArray.length; i++){
+            if (!(firstArray[i] === secondArray[i])){
+                console.log("  Error, Wrong result");
+                return 0;
+            }
+        }
+        console.log("  Test passed successfully");
     }
-    catch (Err){
-        console.log("Test Failed.", Err.message);
+    else console.log("  Error, Wrong result");
+}
+export function assertEqualityOfNestedArrays(firstArray, secondArray){
+    if(firstArray.length === secondArray.length){
+        for (let i = 0; i < firstArray.length; i++){
+            if (firstArray[i].length === 2 && secondArray[i].length === 2) {
+                if(!(firstArray[i][1] === secondArray[i][1] && firstArray[i][2] === secondArray[i][2])){
+                    console.log("  Error, Wrong result");
+                    return 0;
+                }
+            }
+            else {
+                console.log("  Error, Wrong result");
+                return 0;
+            }
+        }
+        console.log("  Test passed successfully");
     }
 }
-
-export function catchForTask2(func, species, count, result, methods){
-    try{
-        func(species,count,result,methods);
-        console.log("Test passed successfully");
+export function assertEqualityOfObjectsInArrays(firstArray, secondArray){
+    if(firstArray.length === secondArray.length){
+        for (let i = 0; i < firstArray.length; i++){
+            if (!(firstArray[i].species === secondArray[i].species && firstArray[i].count === secondArray[i].count)) {
+                console.log("  Error, Wrong result");
+                return 0;
+            }
+        }
+        console.log("  Test passed successfully");
     }
-    catch (Err){
-        console.log("Test Failed.", Err.message);
-    }
+    else console.log("  Error, Wrong result");
 }
