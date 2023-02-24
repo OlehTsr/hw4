@@ -4,7 +4,7 @@ export function getIteratorOverEverySecondLetter(object) {
       object[Symbol.iterator] = function () {
         let symbol = -1;
         let text = this["text"];
-        let arrayOfSkippedSymbols = [" ", ".", ",", "!", "?", "'", "`"];
+        let arrayOfSkippedSymbols = [" ", ".", ",", "!", "?", "'", "`","-",";",":"];
         return {
           next() {
             symbol += 2;
@@ -23,14 +23,10 @@ export function getIteratorOverEverySecondLetter(object) {
         }
       }
       return object;
-    } else {
-      console.log("Error. Something is wrong");
-      return 0;
-    }
-  } else {
-    console.log("Error. Variable isn't object");
-    return 0;
-  }
+    } else return 0;
+
+  } else return 0;
+
 }
 
 export function getIteratorByWords(object) {
@@ -39,7 +35,7 @@ export function getIteratorByWords(object) {
       object[Symbol.iterator] = function () {
         let symbol = 0;
         let text = this["text"];
-        let arrayOfSkippedSymbols = [".", ",", "!", "?"];
+        let arrayOfSkippedSymbols = [".", ",", "!", "?", "—", ";", ":"];
         return {
           next() {
 
@@ -69,14 +65,8 @@ export function getIteratorByWords(object) {
         }
       }
       return object;
-    } else {
-      console.log("Error. Something is wrong");
-      return 0;
-    }
-  } else {
-    console.log("Error. Variable isn't object");
-    return 0;
-  }
+    } else return 0;
+  } else return 0
 }
 
 export function getIteratorBySentences(object) {
@@ -108,14 +98,8 @@ export function getIteratorBySentences(object) {
         }
       }
       return object;
-    } else {
-      console.log("Error. Something is wrong");
-      return 0;
-    }
-  } else {
-    console.log("Error. Variable isn't object");
-    return 0;
-  }
+    } else return 0;
+  } else return 0;
 }
 
 export function getIteratorByVowels(object) {
@@ -137,12 +121,6 @@ export function getIteratorByVowels(object) {
         }
       }
       return object;
-    } else {
-      console.log("Error. Something is wrong");
-      return 0;
-    }
-  } else {
-    console.log("Error. Variable isn't object");
-    return 0;
-  }
+    } else return 0;
+  } else return 0;
 }

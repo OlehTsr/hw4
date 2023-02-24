@@ -4,14 +4,8 @@ import {
     getIteratorByWords,
     getIteratorOverEverySecondLetter
 } from "./task3.js";
-import {assertEquality, assertEqualityOfObjectsInArrays} from "./asserts.js";
-function convertIteratorToString(iterator){
-    let result = ""
-    for(let iteration of iterator){
-        result += iteration;
-    }
-    return result
-}
+import {assertEquality, assertEqualityOfObjectsInArrays, convertIteratorToString} from "./asserts.js";
+
 function testFunctionGetIteratorOverEverySecondLetter(){
     console.log("\nTest function getIteratorOverEverySecondLetter:")
     assertEquality(convertIteratorToString(getIteratorOverEverySecondLetter({"text": "word"})), "od");

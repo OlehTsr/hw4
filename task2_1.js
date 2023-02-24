@@ -38,7 +38,7 @@ export function checkIsAnimalInArrayWithMethods(species){
 export function addAnimalWithMethods(species, count){
     if(typeof species === "string" && typeof count !== "object" && !isNaN(+count) && +count >= 0 && +count !== Infinity) {
 
-        if (zoo2_1.find(item => item.species === species)) {
+        if (zoo2_1.some(item => item.species === species)) {
             zoo2_1.map(function (item) {
                 if (item.species === species) item.count = +count;
             });
