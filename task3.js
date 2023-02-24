@@ -75,7 +75,7 @@ export function getIteratorBySentences(object) {
       object[Symbol.iterator] = function () {
         let symbol = 0;
         let text = this["text"];
-        let arrayOfSkippedSymbols = [".", ",", "!", "?"];
+        let arrayOfSkippedSymbols = [".", "!", "?"];
         return {
           next() {
 
