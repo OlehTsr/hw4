@@ -17,7 +17,7 @@ function sort(firstSpecies, secondSpecies) {
 }
 export function getSortedArrayByCountWithMethods() {
   let sortedZoo = zoo2_1.slice();
-  return sortedZoo.sort(sort).map(item => [item.species, item.count]);
+  return sortedZoo.sort(sort);
 }
 
 export function getAllSpeciesInOrderWithMethods() {

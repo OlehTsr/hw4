@@ -10,16 +10,19 @@ function testFunctionCreateAndGetStudentObject(){
                 security: {email: "tsurya.oleg@gmail.com", password: "qwerty"},
                 programing: 95,
                 math: 63,
-                kl: 99,};
+                kl: 99,
+  };
+
+  let result = {
+    username: "Oleh Tsuria",
+    email: "tsurya.oleg@gmail.com",
+    password: "qwerty",
+    averageOfPoints: 86,
+    subjects: {programing: 95, math: 63, kl: 99}
+  };
+
   try {
     let functionResult = createAndGetStudentObject(object);
-    let result = {
-      username: "Oleh Tsuria",
-      email: "tsurya.oleg@gmail.com",
-      password: "qwerty",
-      averageOfPoints: 86,
-      subjects: {programing: 95, math: 63, kl: 99}
-    };
     assertEquality(JSON.stringify(functionResult), JSON.stringify(result));
   }
   catch (Error){
@@ -28,7 +31,7 @@ function testFunctionCreateAndGetStudentObject(){
 }
 
 function testFunctionGetAveragePointsBySurnameAndPassword(){
-  console.log("Test function getAveragePointsBySurnameAndPassword");
+  console.log("Test function getAveragePointsBySurnameAndPassword:");
   try {
     let functionResult = getAveragePointsBySurnameAndPassword("Oleh Tsuria", "qwerty");
     assertEquality(functionResult,86);

@@ -58,7 +58,7 @@ function testGetSortedObjectByCount(){
     console.log("Methods on:");
 
     functionResult = JSON.stringify(getSortedArrayByCountWithMethods());
-    result = JSON.stringify([['lion',5],["bear",10]])
+    result = JSON.stringify([{"species":"lion","count":5},{"species":"bear","count":10}])
     assertEquality(functionResult,result);
 
     console.log("Methods off:");
