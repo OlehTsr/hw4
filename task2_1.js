@@ -34,9 +34,7 @@ function findIndexOfAnimalBySpecies(species) {
 export function addAnimalWithMethods(species, count) {
   if (typeof species === "string" && typeof count !== "object" && !isNaN(+count) && +count >= 0 && +count !== Infinity) {
     let indexOfAnimal = findIndexOfAnimalBySpecies(species);
-    if (indexOfAnimal !== -1) {
-      zoo2_1[indexOfAnimal].count = count;
-    } else zoo2_1.push({"species": species, "count": +count,})
+    (indexOfAnimal !== -1) ? zoo2_1[indexOfAnimal].count = count : zoo2_1.push({"species": species, "count": +count});
   }
 }
 export function deleteAnimalBySpeciesWithMethods(species) {

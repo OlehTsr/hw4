@@ -51,7 +51,6 @@ function testMethodDelete() {
 
   resultMap = JSON.stringify(map);
   resultRealMap = JSON.stringify(Array.from(realMap));
-
   assertEquality(resultMap, resultRealMap);
 
 }
