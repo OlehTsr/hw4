@@ -1,14 +1,22 @@
 let students = new Map;
-
+function getUserName(name, surname){
+  if(typeof name === "string" && typeof surname === "string") return name+" "+surname;
+  else return new SyntaxError("Error, can't create username");
+}
+function getAverageOfPoints(arrayOfPoints){
+  return Math.round(arrayOfPoints.reduce((sum,mark) => sum += +mark, 0)/arrayOfPoints.length);
+}
+function checkIsObjectCorrect(course,faculty,security){
+  if(!isNaN(+course)) return new SyntaxError("Error, wrong courses");
+  if(typeof faculty !== "string") return new SyntaxError("Error, wrong faculty");
+  if(typeof security !== "object" || typeof security.email !== "string" || typeof  security.password !== "string") return new SyntaxError("Error, wrong security");
+}
 export function createAndGetStudentObject(object){
+
   let studentObject = {}
   let {name, surname, course, faculty, security, ...subjects} = object;
-  function getUserName(name, surname){
-    if(typeof name === "string" && typeof surname === "string") return name+" "+surname;
-  }
-  function getAverageOfPoints(arrayOfPoints){
-    return Math.round(arrayOfPoints.reduce((sum,mark) => sum += +mark, 0)/arrayOfPoints.length);
-  }
+
+  checkIsObjectCorrect(course,faculty,security);
 
   let username = getUserName(name,surname);
 
