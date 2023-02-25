@@ -51,7 +51,7 @@ export function getSortedArrayByCountWithoutMethods(){
 export function getAllSpeciesInOrderWithoutMethods(){
     let allSpecies = [];
     for(let animal of zoo2_2){
-        allSpecies[allSpecies.length++] = animal.species;
+        allSpecies[allSpecies.length] = animal.species;
     }
     return allSpecies;
 }
@@ -72,7 +72,7 @@ export function addAnimalWithoutMethods(species, count){
                 check = true;
             }
         }
-        if (!check) zoo2_2[zoo2_2.length++] = {"species": species, "count": +count,};
+        if (!check) zoo2_2[zoo2_2.length] = {"species": species, "count": +count,};
     }
 }
 

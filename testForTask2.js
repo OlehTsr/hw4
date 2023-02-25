@@ -91,7 +91,7 @@ export function testFunctionAddAnimal(){
 }
 
 export function testDeleteAnimalBySpecies(){
-    console.log("\nTest function AddAnimal:")
+    console.log("\nTest function deleteAnimalBySpecies:")
     console.log("Methods on:");
     deleteAnimalBySpeciesWithMethods("lion");
     assertEqualityOfObjectsInArrays(zoo2_1,[{"species": "bear", "count": 10}]);
