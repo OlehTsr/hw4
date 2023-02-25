@@ -1,4 +1,4 @@
-import {assertEquality,assertEqualityOfObjectsInArrays,assertEqualityOfArrays,assertEqualityOfNestedArrays} from "./asserts.js";
+import {assertEquality} from "./asserts.js";
 import {getCountOfThisSpeciesWithMethods,getCountOfAllAnimalsWithMethods,getSpeciesFromCountWithMethods,getSortedArrayByCountWithMethods,getAllSpeciesInOrderWithMethods,checkIsAnimalInArrayWithMethods,addAnimalWithMethods,deleteAnimalBySpeciesWithMethods,zoo2_1} from "./task2_1.js";
 import {getCountOfThisSpeciesWithoutMethods,getCountOfAllAnimalsWithoutMethods,getSpeciesFromCountWithoutMethods,getSortedArrayByCountWithoutMethods,getAllSpeciesInOrderWithoutMethods,checkIsAnimalInArrayWithoutMethods,addAnimalWithoutMethods,deleteAnimalBySpeciesWithoutMethods,zoo2_2} from "./task2_2.js";
 
@@ -27,29 +27,60 @@ function testFunctionGetCountOfAllAnimals(){
 
 function testGetSpeciesFromCount(){
     console.log("\nTest function getCountOfAllAnimals:");
+    let functionResult;
+    let result;
     console.log("Methods on:");
-    assertEqualityOfArrays(getSpeciesFromCountWithMethods(5),["lion"]);
-    assertEqualityOfArrays(getSpeciesFromCountWithMethods(2),[]);
+
+    functionResult = JSON.stringify(getSpeciesFromCountWithMethods(5));
+    result = JSON.stringify(["lion"]);
+    assertEquality(functionResult,result);
+
+    functionResult = JSON.stringify(getSpeciesFromCountWithMethods(2));
+    result = JSON.stringify([]);
+    assertEquality(functionResult,result);
+
     console.log("Methods off:");
-    assertEqualityOfArrays(getSpeciesFromCountWithoutMethods(7),["camel"]);
-    assertEqualityOfArrays(getSpeciesFromCountWithoutMethods(2),[]);
+
+    functionResult = JSON.stringify(getSpeciesFromCountWithoutMethods(7));
+    result = JSON.stringify(["camel"]);
+    assertEquality(functionResult,result);
+
+    functionResult = JSON.stringify(getSpeciesFromCountWithoutMethods(2));
+    result = JSON.stringify([]);
+    assertEquality(functionResult,result);
 }
 
 
 function testGetSortedObjectByCount(){
     console.log("\nTest function getSortedObjectByCount:");
+    let functionResult;
+    let result;
     console.log("Methods on:");
-    assertEqualityOfNestedArrays(getSortedArrayByCountWithMethods(), [['lion',5],["bear",10]]);
+
+    functionResult = JSON.stringify(getSortedArrayByCountWithMethods());
+    result = JSON.stringify([['lion',5],["bear",10]])
+    assertEquality(functionResult,result);
+
     console.log("Methods off:");
-    assertEqualityOfNestedArrays(getSortedArrayByCountWithoutMethods(), [['crocodile',3],["camel",7]]);
+    functionResult = JSON.stringify(getSortedArrayByCountWithoutMethods());
+    result = JSON.stringify([['crocodile',3],["camel",7]]);
+    assertEquality(functionResult, result);
 }
 
 export function testGetAllSpeciesInOrder(){
     console.log("\nTest function getAllSpeciesInOrderWithMethods:");
+    let functionResult;
+    let result;
     console.log("Methods on:");
-    assertEqualityOfArrays(getAllSpeciesInOrderWithMethods(),["lion","bear"]);
+
+    functionResult = JSON.stringify(getAllSpeciesInOrderWithMethods());
+    result = JSON.stringify(["lion","bear"]);
+    assertEquality(functionResult,result);
+
     console.log("Methods off:");
-    assertEqualityOfArrays(getAllSpeciesInOrderWithoutMethods(),["camel","crocodile"]);
+    functionResult = JSON.stringify(getAllSpeciesInOrderWithoutMethods());
+    result = JSON.stringify(["camel","crocodile"]);
+    assertEquality(functionResult,result);
 }
 
 function testCheckIsAnimalInArray(){
@@ -63,45 +94,73 @@ function testCheckIsAnimalInArray(){
 }
 
 export function testFunctionAddAnimal(){
-    console.log("\nTest function AddAnimal:")
+    console.log("\nTest function AddAnimal:");
+    let functionResult;
+    let result;
     console.log("Methods on:");
 
     addAnimalWithMethods("lion","5");
-    assertEqualityOfObjectsInArrays(zoo2_1, [{"species": "lion", "count": 5}]);
+    functionResult = JSON.stringify(zoo2_1);
+    result = JSON.stringify([{"species": "lion", "count": 5}]);
+    assertEquality(functionResult, result);
 
     addAnimalWithMethods("bear", -7);
-    assertEqualityOfObjectsInArrays(zoo2_1, [{"species": "lion", "count": 5}]);
+    functionResult = JSON.stringify(zoo2_1);
+    result = JSON.stringify([{"species": "lion", "count": 5}]);
+    assertEquality(functionResult, result);
 
     addAnimalWithMethods("bear", 10);
-    assertEqualityOfObjectsInArrays(zoo2_1, [{"species": "lion", "count": 5},{"species": "bear", "count": 10}]);
+    functionResult = JSON.stringify(zoo2_1);
+    result = JSON.stringify([{"species": "lion", "count": 5},{"species": "bear", "count": 10}]);
+    assertEquality(functionResult, result);
 
     console.log("Methods off:");
 
     addAnimalWithoutMethods("camel","7");
-    assertEqualityOfObjectsInArrays(zoo2_2, [{"species": "camel", "count": 7}]);
+    functionResult = JSON.stringify(zoo2_2);
+    result = JSON.stringify([{"species": "camel", "count": 7}]);
+    assertEquality(functionResult, result);
 
 
     addAnimalWithoutMethods("crocodile", -7);
-    assertEqualityOfObjectsInArrays(zoo2_2, [{"species": "camel", "count": 7}]);
+    functionResult = JSON.stringify(zoo2_2);
+    result = JSON.stringify([{"species": "camel", "count": 7}]);
+    assertEquality(functionResult, result);
 
 
     addAnimalWithoutMethods("crocodile", 3);
-    assertEqualityOfObjectsInArrays(zoo2_2, [{"species": "camel", "count": 7},{"species": "crocodile", "count": 3}]);
+    functionResult = JSON.stringify(zoo2_2);
+    result = JSON.stringify([{"species": "camel", "count": 7},{"species": "crocodile", "count": 3}]);
+    assertEquality(functionResult,result);
 
 }
 
 export function testDeleteAnimalBySpecies(){
-    console.log("\nTest function deleteAnimalBySpecies:")
+    console.log("\nTest function deleteAnimalBySpecies:");
+    let functionResult;
+    let result;
     console.log("Methods on:");
+
     deleteAnimalBySpeciesWithMethods("lion");
-    assertEqualityOfObjectsInArrays(zoo2_1,[{"species": "bear", "count": 10}]);
+    functionResult = JSON.stringify(zoo2_1);
+    result = JSON.stringify([{"species": "bear", "count": 10}]);
+    assertEquality(functionResult, result);
+
     deleteAnimalBySpeciesWithMethods("parrot");
-    assertEqualityOfObjectsInArrays(zoo2_1,[{"species": "bear", "count": 10}]);
+    functionResult = JSON.stringify(zoo2_1);
+    result = JSON.stringify([{"species": "bear", "count": 10}]);
+    assertEquality(functionResult,result);
+
     console.log("Methods off:");
     deleteAnimalBySpeciesWithoutMethods("camel");
-    assertEqualityOfObjectsInArrays(zoo2_2,[{"species": "crocodile", "count": 3}]);
+    functionResult = JSON.stringify(zoo2_2);
+    result = JSON.stringify([{"species": "crocodile", "count": 3}]);
+    assertEquality(functionResult,result);
+
     deleteAnimalBySpeciesWithoutMethods("parrot");
-    assertEqualityOfObjectsInArrays(zoo2_2,[{"species": "crocodile", "count": 3}]);
+    functionResult = JSON.stringify(zoo2_2);
+    result = JSON.stringify([{"species": "crocodile", "count": 3}]);
+    assertEquality(functionResult,result);
 }
 export function testsForTask2(){
     console.log("\nTask2:");

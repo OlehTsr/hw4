@@ -1,5 +1,5 @@
 import {map} from "./task4.js";
-import {assertEquality, assertEqualityOfObjectsInArrays, convertIteratorToString} from "./asserts.js";
+import {assertEquality, convertIteratorToString} from "./asserts.js";
 
 function convertMapIteratorToString(iterator) {
   let result = ""
@@ -25,7 +25,7 @@ function testMethodSet() {
   resultMap = JSON.stringify(map);
   resultRealMap = JSON.stringify(Array.from(realMap));
 
-  assertEqualityOfObjectsInArrays(resultMap, resultRealMap);
+  assertEquality(resultMap, resultRealMap);
 }
 
 function testMethodGet() {
