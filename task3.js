@@ -23,10 +23,6 @@ export function getIteratorOverEverySecondLetter(object) {
     }
   }
 }
-let a = getIteratorBySentences({"text": "   fad sfg. fdsaf"})
-for (let x of a) {
-  console.log(x)
-}
 export function getIteratorByWords(object) {
   if (typeof object === "object") {
     if ("text" in object && typeof object.text === "string") {
@@ -77,8 +73,8 @@ export function getIteratorBySentences(object) {
         }
       }
       return object;
-    } else return 0;
-  } else return 0;
+    }
+  }
 }
 
 export function getIteratorByVowels(object) {
@@ -100,6 +96,6 @@ export function getIteratorByVowels(object) {
         }
       }
       return object;
-    } else return 0;
-  } else return 0;
+    }
+  }
 }

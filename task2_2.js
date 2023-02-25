@@ -21,10 +21,8 @@ export function getSpeciesFromCountWithoutMethods(count){
             species[species.length++] = (animal.species);
         }
     }
-    if(species.length){
-        return species;
-    }
-    else return [];
+    return species;
+
 
 }
 export function getSortedArrayByCountWithoutMethods(){
